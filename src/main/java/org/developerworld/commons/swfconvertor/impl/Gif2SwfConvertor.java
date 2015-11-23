@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter.impl;
+package org.developerworld.commons.swfconvertor.impl;
 
 /**
  * gif文件转换swf转换器
@@ -6,7 +6,7 @@ package org.developerworld.commons.swfconverter.impl;
  * @author Roy Huang
  *
  */
-public class Gif2SwfConverter extends AbstractSwfConverter {
+public class Gif2SwfConvertor extends AbstractSwfConvertor {
 
 	protected String getExecCommand() {
 		return "gif2swf";

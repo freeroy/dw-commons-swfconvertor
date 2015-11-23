@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter.impl;
+package org.developerworld.commons.swfconvertor.impl;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,8 +13,8 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.SystemUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.developerworld.commons.swfconverter.SwfConverter;
-import org.developerworld.commons.swfconverter.utils.Utils;
+import org.developerworld.commons.swfconvertor.SwfConvertor;
+import org.developerworld.commons.swfconvertor.utils.Utils;
 
 /**
  * 抽象swf转换器
@@ -22,9 +22,9 @@ import org.developerworld.commons.swfconverter.utils.Utils;
  * @author Roy Huang
  *
  */
-public abstract class AbstractSwfConverter implements SwfConverter {
+public abstract class AbstractSwfConvertor implements SwfConvertor {
 
-	private final static Log LOG = LogFactory.getLog(AbstractSwfConverter.class);
+	private final static Log LOG = LogFactory.getLog(AbstractSwfConvertor.class);
 
 	private String swfToolsHome;
 

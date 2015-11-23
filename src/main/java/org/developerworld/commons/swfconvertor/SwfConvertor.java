@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter;
+package org.developerworld.commons.swfconvertor;
 
 import java.io.File;
 
@@ -8,7 +8,7 @@ import java.io.File;
  * @author Roy Huang
  *
  */
-public interface SwfConverter {
+public interface SwfConvertor {
 
 	/**
 	 * 转为swf文件

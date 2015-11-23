@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter.impl;
+package org.developerworld.commons.swfconvertor.impl;
 
 import java.util.Iterator;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.apache.commons.lang.StringUtils;
  * @author Roy Huang
  *
  */
-public class Pdf2SwfConverter extends AbstractSwfConverter {
+public class Pdf2SwfConvertor extends AbstractSwfConvertor {
 
 	protected String getExecCommand() {
 		return "pdf2swf";
@@ -205,7 +205,7 @@ public class Pdf2SwfConverter extends AbstractSwfConverter {
 	 * @param password
 	 * @return
 	 */
-	public Pdf2SwfConverter setPassword(String password) {
+	public Pdf2SwfConvertor setPassword(String password) {
 		execCommandArgs.put("-P", password);
 		return this;
 	}
@@ -216,7 +216,7 @@ public class Pdf2SwfConverter extends AbstractSwfConverter {
 	 * @param pages
 	 * @return
 	 */
-	public Pdf2SwfConverter setPages(String pages) {
+	public Pdf2SwfConvertor setPages(String pages) {
 		execCommandArgs.put("-p", pages);
 		return this;
 	}

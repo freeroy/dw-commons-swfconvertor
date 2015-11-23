@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter.impl;
+package org.developerworld.commons.swfconvertor.impl;
 
 /**
  * jpeg文件转换swf转换器
@@ -6,7 +6,7 @@ package org.developerworld.commons.swfconverter.impl;
  * @author Roy Huang
  *
  */
-public class Wav2SwfConverter extends AbstractSwfConverter {
+public class Wav2SwfConvertor extends AbstractSwfConvertor {
 
 	protected String getExecCommand() {
 		return "wav2swf";

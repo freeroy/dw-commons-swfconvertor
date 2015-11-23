@@ -1,4 +1,4 @@
-package org.developerworld.commons.swfconverter.utils;
+package org.developerworld.commons.swfconvertor.utils;
 
 import java.io.File;
 
