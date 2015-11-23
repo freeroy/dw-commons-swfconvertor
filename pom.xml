@@ -9,9 +9,9 @@
 		<relativePath>../dw-commons-parent/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>dw-commons-swfconverter</artifactId>
+	<artifactId>dw-commons-swfconvertor</artifactId>
 	<packaging>jar</packaging>
-	<name>dw-commons-swfconverter</name>
+	<name>dw-commons-swfconvertor</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<description>swf文件转换工具包</description>
 
