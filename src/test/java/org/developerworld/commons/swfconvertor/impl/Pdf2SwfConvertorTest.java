@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class Pdf2SwfConvertorTest {
 
-	//@Test
+	@Test
 	public void testConver2swf() {
 		URL origFileUrl = this.getClass().getClassLoader().getResource("pdf.pdf");
 		final File origFile = new File(origFileUrl.getPath());

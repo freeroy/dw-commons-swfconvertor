@@ -4,8 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -61,7 +63,7 @@ public abstract class AbstractSwfConvertor implements SwfConvertor {
 	}
 
 	public void conver2swf(String origFilePath, String destFilePath) {
-		conver2swf(origFilePath, destFilePath);
+		conver2swf(origFilePath, destFilePath, null);
 	}
 
 	public void conver2swf(String origFilePath, String destFilePath, String execCommonsArgs) {
@@ -96,12 +98,18 @@ public abstract class AbstractSwfConvertor implements SwfConvertor {
 	 */
 	private int converInWindow(String origFilePath, String destFilePath, String execCommandArgs)
 			throws IOException, InterruptedException {
-		String command = getExecCommand() + ".exe " + origFilePath + " -o " + destFilePath + " " + getExecCommandStr();
+		String[] execCommandArray = getExecCommandArray();
+		String[] commands = new String[execCommandArray.length + 4];
+		commands[0] = getExecCommand() + ".exe";
 		if (StringUtils.isNotBlank(swfToolsHome))
-			command = swfToolsHome + File.separator + command;
-		if (log)
-			LOG.info("run command:" + command);
-		Process pro = Runtime.getRuntime().exec(command);
+			commands[0] = swfToolsHome + File.separator + commands[0];
+		commands[1] = origFilePath;
+		commands[2] = "-o";
+		commands[3] = destFilePath;
+		for (int i = 0; i < execCommandArray.length; i++)
+			commands[i + 4] = execCommandArray[i];
+		Process pro = Runtime.getRuntime().exec(new String[] {
+				swfToolsHome + File.separator + getExecCommand() + ".exe", origFilePath, "-o", destFilePath });
 		BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 		String console = null;
 		while ((console = br.readLine()) != null) {
@@ -126,12 +134,19 @@ public abstract class AbstractSwfConvertor implements SwfConvertor {
 	 */
 	private int converInUnix(String origFilePath, String destFilePath, String execCommonsArgs)
 			throws IOException, InterruptedException {
-		String command = getExecCommand() + origFilePath + " -o " + destFilePath + " " + getExecCommandStr();
+		String[] execCommandArray = getExecCommandArray();
+		String[] commands = new String[execCommandArray.length + 4];
+		commands[0] = getExecCommand();
 		if (StringUtils.isNotBlank(swfToolsHome))
-			command = swfToolsHome + File.separator + command;
+			commands[0] = swfToolsHome + File.separator + commands[0];
+		commands[1] = origFilePath;
+		commands[2] = "-o";
+		commands[3] = destFilePath;
+		for (int i = 0; i < execCommandArray.length; i++)
+			commands[i + 4] = execCommandArray[i];
 		if (log)
-			LOG.info("run command:" + command);
-		Process pro = Runtime.getRuntime().exec(command);
+			LOG.info("run command:" + commands);
+		Process pro = Runtime.getRuntime().exec(commands);
 		BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream()));
 		String console = null;
 		while ((console = br.readLine()) != null) {
@@ -149,16 +164,16 @@ public abstract class AbstractSwfConvertor implements SwfConvertor {
 	 * 
 	 * @return
 	 */
-	private String getExecCommandStr() {
-		String rst = "";
+	private String[] getExecCommandArray() {
+		List<String> rst = new ArrayList<String>();
 		Iterator<Entry<String, String>> iterator = execCommandArgs.entrySet().iterator();
 		while (iterator.hasNext()) {
 			Entry<String, String> entry = iterator.next();
-			rst += entry.getKey() + " ";
+			rst.add(entry.getKey());
 			if (StringUtils.isNotBlank(entry.getValue()))
-				rst += entry.getValue() + " ";
+				rst.add(entry.getValue());
 		}
-		return rst;
+		return rst.toArray(new String[0]);
 	}
 
 	/**
