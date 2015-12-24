@@ -11,7 +11,7 @@
 	<artifactId>dw-commons-swfconvertor</artifactId>
 	<packaging>jar</packaging>
 	<name>dw-commons-swfconvertor</name>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<description>swf文件转换工具包</description>
 
 	<!-- scm配置 -->
